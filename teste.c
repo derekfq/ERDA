@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "items.h"
-#include "pedidos.h"
 
 int main(int argc, char ** argv){
     Itens * I = inicializa_Itens();
