@@ -32,7 +32,7 @@ item set_item(const char nome[64], unsigned short qntd, float valor_unidade, con
     ret.qntd=qntd;
     ret.v_unidade=valor_unidade;
     ret.v_total=valor_unidade*qntd;
-    if((char*)obs)
+    if(obs)
         strcpy(ret.obs,obs);
     else
         memset(ret.obs,'\0',256);
