@@ -26,7 +26,7 @@ Itens * inicializa_Itens (){
     return i;
 }
 
-item set_item(char nome[64], unsigned short qntd, float valor_unidade, char obs[256]){
+item set_item(const char nome[64], unsigned short qntd, float valor_unidade, const char obs[256]){
     item ret;
     strcpy(ret.nome,nome);
     ret.qntd=qntd;
