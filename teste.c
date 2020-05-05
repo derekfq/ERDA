@@ -17,14 +17,14 @@ int main(int argc, char ** argv){
 
     item variavel_item;
     /*Podemos configura-la na mão fazendo:
-    strcpy(variavel_item.nome,(char*)"CACHORRO QUENTE");
+    strcpy(variavel_item.nome,"CACHORRO QUENTE");
     variavel_item.qntd = 3;
     variavel_item.v_unidade = 7.99;
     variavel_item.v_total = (variavel_item.v_unidade)*(variavel_item.v_unidade);
-    strcpy(variavel_item.obs,(char*)"Sem mostarda, por favor...");
+    strcpy(variavel_item.obs,"Sem mostarda, por favor...");
     
     OU, de maneira mais facil utilizar a funcao "set_item":             */
-    variavel_item = set_item((char*)"CACHORRO QUENTE",3,7.99, NULL);
+    variavel_item = set_item("CACHORRO QUENTE",3,7.99, NULL);
     //O ULTIMO PARAMETRO EH A OBSERVACAO, DEIXE NULL para NAO INCLUI-LA!
     //Esta funcao calcula automaticamente o v_total!
     printf("variavel_item.v_total=%.2f\n",variavel_item.v_total);
@@ -37,9 +37,9 @@ int main(int argc, char ** argv){
     printf("\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n");
 
     //Funcionou! Agora vamos adicionar mais valores!
-    variavel_item = set_item((char*)"Cachorro Quente Prensado",2,12.3,NULL);
+    variavel_item = set_item("Cachorro Quente Prensado",2,12.3,NULL);
     push_item(I,variavel_item);
-    variavel_item = set_item((char*)"Dogao Tunado Gourmet",4,18,NULL);
+    variavel_item = set_item("Dogao Tunado Gourmet",4,18,NULL);
     push_item(I,variavel_item);
     //Vamos imprimir para ver se está certo?
     imprime_Itens(I);
