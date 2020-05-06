@@ -19,7 +19,7 @@
 ## AJUDA BIBLIOTECAS:
 
 ### Biblioteca "items.h"        -   (Implementação de PILHAS para registro dos Itens).
-#### Estruturas de dados:
+#### Estrutura de dados:
 ```c
 typedef struct item{
     char nome[64];          //item: descricao do produto
@@ -36,7 +36,7 @@ typedef struct itens{
 ```
 
 
-#### Funções:
+### Funções:
 > ```c
 >Itens * inicializa_Itens ()
 >```
