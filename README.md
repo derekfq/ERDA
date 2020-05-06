@@ -41,7 +41,7 @@ typedef struct itens{
 >Itens * inicializa_Itens ()
 >```
 ***Descrição:** Inicializa a PILHA de Itens em um ponteiro do tipo **Itens**, alocando em memória.
-*ATENÇÃO, caso o espaço em memória que foi alocado sua PILHA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **libera_Itens(Itens * I)**.*
+ATENÇÃO, caso o espaço em memória que foi alocado sua PILHA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **libera_Itens(Itens * I)**.*
 
 
 > ```c
@@ -114,7 +114,7 @@ typedef struct pedidos{
 >Pedidos* inicializa_Pedidos ()
 >```
 ***Descrição:** Inicializa a FILA de Itens em um ponteiro do tipo **Pedidos**, alocando em memória.
-*ATENÇÃO, caso o espaço em memória que foi alocado sua FILA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **libera_Pedidos(Pedidos * P)**.*
+ATENÇÃO, caso o espaço em memória que foi alocado sua FILA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **libera_Pedidos(Pedidos * P)**.*
 
 > ```c
 >void insere_Pedidos(Pedidos * P, pedido info)
@@ -124,7 +124,7 @@ typedef struct pedidos{
 > ```c
 >pedido retira_Pedidos(Pedidos * P)
 >```
-***Descrição:** Retira da FILA de Pedidos **P** o pedido do inicio da FILA ("atende"). RETORNO: Valor do **pedido** que foi retirado.
+***Descrição:** Retira da FILA de Pedidos **P** o pedido do inicio da FILA ("atende"). RETORNO: Valor do **pedido** que foi retirado.*
 
 > ```c
 >void imprime_Pedidos(Pedidos * P)
