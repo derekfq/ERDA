@@ -34,12 +34,36 @@ typedef struct itens{
     item * topo;
 } Itens; //contem vetor de item
 ```
+
+
 #### Funções:
+> ```c
+>Itens * inicializa_Itens ()
+>```
+**Descrição:** Inicializa a PILHA de Itens em um ponteiro do tipo **Itens**, alocando em memória. *ATENÇÃO,  , caso o espaço em memória que foi alocado sua PILHA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **free()**.*
+
+
 > ```c
 >item set_item(const char nome[64], unsigned short qntd, float valor_unidade, char obs[256])
 >```
 **Descrição:** Edita os valores duma variavel do tipo item, para facilitar o manuseio, v_total é calculado automaticamente.
 O campo *char obs[256]* deve ser = **NULL** caso não necessário!
+
+
+> ```c
+>void push_item(Itens * I, item info)
+>```
+**Descrição:** Faz um push das informações contidas em **info** para a PILHA de Itens **I**.
+
+
+> ```c
+>item pop_item(Itens * I)
+>```
+**Descrição:** Faz um pop da PILHA de Itens **I**, Retorna: Valor do topo da PILHA **I**.
+
+
+
+
 
 
 
