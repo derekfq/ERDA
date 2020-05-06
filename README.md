@@ -18,7 +18,7 @@
 ----
 ## AJUDA BIBLIOTECAS:
 
-### Biblioteca "items.h"
+### Biblioteca "items.h"        -   (Implementação de PILHAS para registro dos Itens).
 #### Estruturas de dados:
 ```c
 typedef struct item{
@@ -45,14 +45,14 @@ O campo *char obs[256]* deve ser = **NULL** caso não necessário!
 
 ------
 
-### pedidos.h
+### Biblioteca "pedidos.h"      -   (Implementação de FILAS para registro dos Pedidos).
 
 ------
 
-### pontos.h
+### Biblioteca "pontos.h"       -   (Implementação de LISTAS para registro dos Pontos de venda).
 
 ------
 
-### sistema.h
+### Biblioteca "sistema.h       -   (Implementações GERAIS para funcionamento do Sistema).
 
 -----
