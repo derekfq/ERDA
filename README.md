@@ -79,6 +79,7 @@ O campo *char obs[256]* deve ser = **NULL** caso não necessário!
 >void imprime_Itens(Itens * I)
 >```
 **Descrição:** Faz a impressão da PILHA de Itens **I**, começando pelo TOPO.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ### Biblioteca "pedidos.h"      -   (Implementação de FILAS para registro dos Pedidos).
