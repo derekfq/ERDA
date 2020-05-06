@@ -16,4 +16,4 @@
 *(OBS: o limite de entrega das Etapas é às 23h59 do dia programado)*
 
 ## Índice
-#### [Manual das Bibliotecas](https://github.com/marcoadenadai/ERDA/blob/master/MANUAL_BIBLIOTECAS.md)
+#### [Manual das Bibliotecas](https://github.com/marcoadenadai/ERDA/blob/master/BIBLIOTECAS.md)
