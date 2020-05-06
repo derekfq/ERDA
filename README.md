@@ -35,7 +35,7 @@ typedef struct itens{
 } Itens; //contem vetor de item
 ```
 
-> item set_item(const char nome[64], unsigned short qntd, float valor_unidade, char obs[256])
+> ```c item set_item(const char nome[64], unsigned short qntd, float valor_unidade, char obs[256])```
 
 
 ------
