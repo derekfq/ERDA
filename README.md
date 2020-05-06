@@ -1,6 +1,6 @@
 # Projeto: Delivery de Hot Dog
 
-## CRONOGRAMA
+## DATAS DE ENTREGA
 **(10/05)** Etapa 1 - Bibliotecas items.h & pedidos.h (ver: item 2 e 3).
 
 **(17/05)** Etapa 2 - Biblioteca pontos.h , programa principal (sistema.h) e permitir cadastrar ponto (ver: item 4).
