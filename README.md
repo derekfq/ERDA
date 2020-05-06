@@ -15,7 +15,7 @@
 
 *(OBS: o limite de entrega das Etapas é às 23h59 do dia programado)*
 
---------------------------------------------------------------------------------------------------------------------
+
 ## MANUAL BIBLIOTECAS:
 
 ### Biblioteca "items.h"        -   (Implementação de PILHAS para registro dos Itens).
