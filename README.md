@@ -18,7 +18,7 @@
 ----
 ## AJUDA BIBLIOTECAS:
 
-### items.h
+### Biblioteca "items.h"
 #### Estruturas de dados:
 ```c
 typedef struct item{
@@ -38,8 +38,7 @@ typedef struct itens{
 > ```c
 >item set_item(const char nome[64], unsigned short qntd, float valor_unidade, char obs[256])
 >```
-###### Descrição:
-Edita os valores duma variavel do tipo item, para facilitar o manuseio, v_total é calculado automaticamente.
+**Descrição:** Edita os valores duma variavel do tipo item, para facilitar o manuseio, v_total é calculado automaticamente.
 O campo *char obs[256]* deve ser = **NULL** caso não necessário!
 
 
