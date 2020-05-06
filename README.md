@@ -1,5 +1,8 @@
 # Projeto: Delivery de Hot Dog
 
+## Índice
+#### [Manual das Bibliotecas](https://github.com/marcoadenadai/ERDA/blob/master/BIBLIOTECAS.md)
+
 ## DATAS DE ENTREGA
 **(10/05)** Etapa 1 - Bibliotecas items.h & pedidos.h (ver: item 2 e 3).
 
@@ -15,5 +18,3 @@
 
 *(OBS: o limite de entrega das Etapas é às 23h59 do dia programado)*
 
-## Índice
-#### [Manual das Bibliotecas](https://github.com/marcoadenadai/ERDA/blob/master/BIBLIOTECAS.md)
