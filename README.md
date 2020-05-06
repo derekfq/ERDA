@@ -40,7 +40,8 @@ typedef struct itens{
 > ```c
 >Itens * inicializa_Itens ()
 >```
-**Descrição:** Inicializa a PILHA de Itens em um ponteiro do tipo **Itens**, alocando em memória. *ATENÇÃO,  , caso o espaço em memória que foi alocado sua PILHA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **free()**.*
+***Descrição:*** Inicializa a PILHA de Itens em um ponteiro do tipo **Itens**, alocando em memória.
+*ATENÇÃO, caso o espaço em memória que foi alocado sua PILHA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **free()**.*
 
 
 > ```c
