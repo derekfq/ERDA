@@ -13,9 +13,9 @@
 
 **(14/06)** Etapa 6 - Apresentação deixar preparada 100%.
 
-*(OBS: o limite de entrega das Etapas é às 23h59 do dia programado
+*(OBS: o limite de entrega das Etapas é às 23h59 do dia programado)*
 
-**----**
+----
 ## FUNCOES DAS BIBLIOTECAS:
 
 ### items.h
