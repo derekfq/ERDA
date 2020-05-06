@@ -15,8 +15,8 @@
 
 *(OBS: o limite de entrega das Etapas é às 23h59 do dia programado)*
 
-----
-## AJUDA BIBLIOTECAS:
+--------------------------------------------------------------------------------------------------------------------
+## MANUAL BIBLIOTECAS:
 
 ### Biblioteca "items.h"        -   (Implementação de PILHAS para registro dos Itens).
 #### Estrutura de dados:
@@ -41,7 +41,7 @@ typedef struct itens{
 >Itens * inicializa_Itens ()
 >```
 ***Descrição:*** Inicializa a PILHA de Itens em um ponteiro do tipo **Itens**, alocando em memória.
-*ATENÇÃO, caso o espaço em memória que foi alocado sua PILHA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **free()**.*
+*ATENÇÃO, caso o espaço em memória que foi alocado sua PILHA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **libera_Itens(Itens * I)**.*
 
 
 > ```c
@@ -60,15 +60,26 @@ O campo *char obs[256]* deve ser = **NULL** caso não necessário!
 > ```c
 >item pop_item(Itens * I)
 >```
-**Descrição:** Faz um pop da PILHA de Itens **I**, Retorna: Valor do topo da PILHA **I**.
+**Descrição:** Faz um pop da PILHA de Itens **I**. RETORNA: Valor do topo da PILHA **I**.
 
 
+> ```c
+>int vazia_Itens(Itens * I)
+>```
+**Descrição:** Faz um pop da PILHA de Itens **I**. RETORNA: Valor do topo da PILHA **I**.
 
 
+> ```c
+>void libera_Itens(Itens * I)
+>```
+**Descrição:** Faz um free em todos os espaços de memória envolvidos na estrutura **I**, liberando esta memória.
 
 
-
-------
+> ```c
+>void imprime_Itens(Itens * I)
+>```
+**Descrição:** Faz a impressão da PILHA de Itens **I**, começando pelo TOPO.
+--------------------------------------------------------------------------------------------------------------------
 
 ### Biblioteca "pedidos.h"      -   (Implementação de FILAS para registro dos Pedidos).
 
