@@ -40,7 +40,7 @@ typedef struct itens{
 > ```c
 >Itens * inicializa_Itens ()
 >```
-***Descrição:*** Inicializa a PILHA de Itens em um ponteiro do tipo **Itens**, alocando em memória.
+***Descrição:** Inicializa a PILHA de Itens em um ponteiro do tipo **Itens**, alocando em memória.
 *ATENÇÃO, caso o espaço em memória que foi alocado sua PILHA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **libera_Itens(Itens * I)**.*
 
 
@@ -107,34 +107,34 @@ typedef struct pedidos{
 > ```c
 >int vazia_Pedidos (Pedidos* f)
 >```
-***Descrição:*** Verifica se a FILA de Pedidos **P** está vazia. RETORNO: 1 = vazia / 0 = não vazia.*
+***Descrição:** Verifica se a FILA de Pedidos **P** está vazia. RETORNO: 1 = vazia / 0 = não vazia.*
 
 
 > ```c
 >Pedidos* inicializa_Pedidos ()
 >```
-***Descrição:*** Inicializa a FILA de Itens em um ponteiro do tipo **Pedidos**, alocando em memória.
+***Descrição:** Inicializa a FILA de Itens em um ponteiro do tipo **Pedidos**, alocando em memória.
 *ATENÇÃO, caso o espaço em memória que foi alocado sua FILA de Itens não seja mais utilizado dentro do programa, é preciso liberar este de forma manual, usando: **libera_Pedidos(Pedidos * P)**.*
 
 > ```c
 >void insere_Pedidos(Pedidos * P, pedido info)
 >```
-***Descrição:*** Insere no final da FILA de Pedidos **P** o pedido **info**, é preciso preencher previamente as informações de **info** (uma função para preenchimento dos dados do pedido será implementada na biblioteca sistema.h).*
+***Descrição:** Insere no final da FILA de Pedidos **P** o pedido **info**, é preciso preencher previamente as informações de **info** (uma função para preenchimento dos dados do pedido será implementada na biblioteca sistema.h).*
 
 > ```c
 >pedido retira_Pedidos(Pedidos * P)
 >```
-***Descrição:*** Retira da FILA de Pedidos **P** o pedido do inicio da FILA ("atende"). RETORNO: Valor do **pedido** que foi retirado.
+***Descrição:** Retira da FILA de Pedidos **P** o pedido do inicio da FILA ("atende"). RETORNO: Valor do **pedido** que foi retirado.
 
 > ```c
 >void imprime_Pedidos(Pedidos * P)
 >```
-***Descrição:*** Faz a impressão da FILA de Pedidos **P**, começando pelo inicio.*
+***Descrição:** Faz a impressão da FILA de Pedidos **P**, começando pelo inicio.*
 
 > ```c
 >void libera_Pedidos(Pedidos * P)
 >```
-***Descrição:*** Faz um free em todos os espaços de memória envolvidos na estrutura **P**, liberando esta memória.*
+***Descrição:** Faz um free em todos os espaços de memória envolvidos na estrutura **P**, liberando esta memória.*
 
 ------
 
