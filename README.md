@@ -17,6 +17,10 @@
 
 
 ## MANUAL BIBLIOTECAS:
+[TOC]
+###H3 header
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Biblioteca "items.h"        -   (Implementação de PILHAS para registro dos Itens).
 #### Estrutura de dados:
@@ -136,12 +140,12 @@ ATENÇÃO, caso o espaço em memória que foi alocado sua FILA de Itens não sej
 >```
 ***Descrição:** Faz um free em todos os espaços de memória envolvidos na estrutura **P**, liberando esta memória.*
 
-------
+--------------------------------------------------------------------------------------------------------------------
 
 ### Biblioteca "pontos.h"       -   (Implementação de LISTAS para registro dos Pontos de venda).
 
-------
+--------------------------------------------------------------------------------------------------------------------
 
 ### Biblioteca "sistema.h       -   (Implementações GERAIS para funcionamento do Sistema).
 
------
+--------------------------------------------------------------------------------------------------------------------
