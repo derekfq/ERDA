@@ -18,11 +18,13 @@
 
 ## MANUAL BIBLIOTECAS:
 
-[TOCM]
+<!--ts-->
+   * [items.h](#biblioteca-itemsh------------implementa%C3%A7%C3%A3o-de-pilhas-para-registro-dos-itens)
+   * [pedidos.h](#biblioteca-pedidosh----------implementa%C3%A7%C3%A3o-de-filas-para-registro-dos-pedidos)
+   * [pontos.h](#biblioteca-pontosh-----------implementa%C3%A7%C3%A3o-de-listas-para-registro-dos-pontos-de-venda)
+   * [sistema.h](#biblioteca-sistemah-----------implementa%C3%A7%C3%B5es-gerais-para-funcionamento-do-sistema)
+<!--te-->
 
-[TOC]
-
-#H1 header
 
 --------------------------------------------------------------------------------------------------------------------
 
