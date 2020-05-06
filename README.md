@@ -119,7 +119,7 @@ ATENÇÃO, caso o espaço em memória que foi alocado sua FILA de Itens não sej
 > ```c
 >void insere_Pedidos(Pedidos * P, pedido info)
 >```
-***Descrição:** Insere no final da FILA de Pedidos **P** o pedido **info**, é preciso preencher previamente as informações de **info** (uma função para preenchimento dos dados do pedido será implementada na biblioteca sistema.h).*
+***Descrição:** Insere no final da FILA de Pedidos **P** o pedido **info**, é preciso preencher previamente as informações de **info** (uma função para preenchimento correto dos dados do **pedido** será implementada na biblioteca sistema.h).*
 
 > ```c
 >pedido retira_Pedidos(Pedidos * P)
