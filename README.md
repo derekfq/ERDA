@@ -16,9 +16,27 @@
 *(OBS: o limite de entrega das Etapas é às 23h59 do dia programado)*
 
 ----
-## FUNCOES DAS BIBLIOTECAS:
+## AJUDA BIBLIOTECAS:
 
 ### items.h
+#### Estruturas de dados:
+```c
+typedef struct item{
+    char nome[64];          //item: descricao do produto
+    unsigned short qntd;    //quantidade
+    float v_unidade;        //valor da unidade em R$
+    float v_total;          //valor total do item do pedido em R$
+    char obs[256];          //campo nao obrigatorio
+    struct item * prox;     //ponteiro para proxima pilha
+} item;
+
+typedef struct itens{
+    item * topo;
+} Itens; //contem vetor de item
+```
+
+> ```item set_item(const char nome[64], unsigned short qntd, float valor_unidade, char obs[256])```
+
 
 ------
 
