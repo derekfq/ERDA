@@ -12,8 +12,8 @@
 
 <!--te-->
 
-## Biblioteca "items.h"        -   (Implementação de PILHAS para registro dos Itens).
-#### Estrutura de dados:
+# Biblioteca "items.h"        -   (Implementação de PILHAS para registro dos Itens).
+### Estrutura de dados:
 ```c
 typedef struct item{
     char nome[64];          //item: descricao do produto
@@ -30,7 +30,7 @@ typedef struct itens{
 ```
 
 
-### Funções:
+## Funções:
 > ```c
 >Itens * inicializa_Itens ()
 >```
@@ -74,10 +74,10 @@ O campo *char obs[256]* deve ser = **NULL** caso não necessário!*
 >```
 ***Descrição:** Faz a impressão da PILHA de Itens **I**, começando pelo TOPO.*
 
---------------------------------------------------------------------------------------------------------------------
 
-### Biblioteca "pedidos.h"      -   (Implementação de FILAS para registro dos Pedidos).
-#### Estrutura de dados:
+
+# Biblioteca "pedidos.h"      -   (Implementação de FILAS para registro dos Pedidos).
+### Estrutura de dados:
 ```c
 typedef enum Reg {centro=1, sul=2, leste=3, norte=4, oeste=5} Regiao;
 
@@ -97,7 +97,7 @@ typedef struct pedidos{
 ```
 
 
-### Funções:
+## Funções:
 > ```c
 >int vazia_Pedidos (Pedidos* f)
 >```
@@ -130,12 +130,12 @@ ATENÇÃO, caso o espaço em memória que foi alocado sua FILA de Itens não sej
 >```
 ***Descrição:** Faz um free em todos os espaços de memória envolvidos na estrutura **P**, liberando esta memória.*
 
---------------------------------------------------------------------------------------------------------------------
 
-### Biblioteca "pontos.h"       -   (Implementação de LISTAS para registro dos Pontos de venda).
 
---------------------------------------------------------------------------------------------------------------------
+# Biblioteca "pontos.h"       -   (Implementação de LISTAS para registro dos Pontos de venda).
 
-### Biblioteca "sistema.h       -   (Implementações GERAIS para funcionamento do Sistema).
 
---------------------------------------------------------------------------------------------------------------------
+
+# Biblioteca "sistema.h       -   (Implementações GERAIS para funcionamento do Sistema).
+
+
