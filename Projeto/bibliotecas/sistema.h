@@ -25,14 +25,62 @@ void CadastraPonto(Pontos ** ListaDePontos, Regiao reg, Experiencia exp){
     insere_Ponto(ListaDePontos, novo);
 }
 
-void LiberaSistema(Pontos * ListaDePontos){
+//-------------------------------------------------------------------------------------------
+//DOING: 
 
+//--- CADASTRAR PEDIDOS --------------------------------------
+int TempoPedido(Itens * PilhaItens, int exp);
+float ValorPedido(Itens * PilhaItens);
+
+void CadastraPedido(ponto * Ponto, Itens * NovosItens){
+    pedido novo;
+    novo.num = gera_pedidoId();
+    novo.regiao = Ponto->regiao;
+    novo.tempo = TempoPedido(NovosItens, Ponto->exp);//tempo para todos os itens do pedido
+    novo.v_pedido = ValorPedido(NovosItens);//calcula valor total do pedido
+    novo.I = NovosItens;
+    novo.prox = NULL;
+    //registrar Pedido na FILA de pedidos (DENTRO DO PONTO)
+    insere_Pedidos(Ponto->P,novo);
+    //atualizar total de pedidos do ponto
+    Ponto->pedidos_total = Ponto->pedidos_total + 1;
+    /*OBS: tempo = tempo de preparo do pedido individualmente
+        na hora de imprimir info do pedido, eu dou o tempo de espera total 
+        (considerando ordem da fila e 15min da entrega) */
 }
 
+int TempoPedido(Itens * PilhaItens, int exp){ //PILHA
+    int qntd_total = 0;
+    Itens * AUX = inicializa_Itens();
+    item x;
+    while(!vazia_Itens(PilhaItens)){
+        x = pop_item(PilhaItens);
+        qntd_total += x.qntd;
+        push_item(AUX,x);
+    }
+    while(!vazia_Itens(AUX)){
+        push_item(PilhaItens,pop_item(AUX));
+    }
+    libera_Itens(AUX);
+    return qntd_total*exp + 5;
+}
+float ValorPedido(Itens * PilhaItens){ //PILHA
+    float valor_pedido = 0;
+    Itens * AUX = inicializa_Itens();
+    item x;
+    while(!vazia_Itens(PilhaItens)){
+        x = pop_item(PilhaItens);
+        x.v_total = x.qntd*x.v_unidade; //coisa de noia
+        valor_pedido += x.v_total;
+        push_item(AUX,x);
+    }
+    while(!vazia_Itens(AUX)){
+        push_item(PilhaItens,pop_item(AUX));
+    }
+    libera_Itens(AUX);
+    return valor_pedido;
+}
 
-//cadastrar ponto (LISTA) [adicao, busca]
-//cadastra pedido (FILA / PILHA): 
-    //calcula tempo de entrega do pedido
-    //calcula valor total do pedido (valor total dos items tem q ta certo)
+//-----------------------------------------------------------
 
 #endif

@@ -9,7 +9,7 @@ typedef enum Reg {centro=1, sul=2, leste=3, norte=4, oeste=5} Regiao;
 typedef struct pedido{
     unsigned int num; //id do pedido
     Regiao regiao; //regiao do pedido
-    unsigned int tempo_entrega; //tempo de entrega
+    unsigned int tempo; //tempo de entrega
     float v_pedido; //valor total do pedido, calculado automaticamente pelo sistema
     Itens * I;    // PILHA de ITENS DO PEDIDO!
     struct pedido * prox;
@@ -35,7 +35,7 @@ void insere_Pedidos(Pedidos * P, pedido info){ //Insere novo pedido "info" no fi
     pedido * novo = (pedido *) malloc(sizeof(pedido));
     novo->num = info.num;
     novo->regiao = info.regiao;
-    novo->tempo_entrega = info.tempo_entrega;
+    novo->tempo = info.tempo;
     novo->v_pedido = info.v_pedido;
     novo->I = info.I;
     novo->prox = NULL;
@@ -55,7 +55,7 @@ pedido retira_Pedidos(Pedidos * P){//Retira do inicio da fila de Pedidos, "atend
     }
     ret.num = P->ini->num;
     ret.regiao = P->ini->regiao;
-    ret.tempo_entrega = P->ini->tempo_entrega;
+    ret.tempo = P->ini->tempo;
     ret.v_pedido = P->ini->v_pedido;
     ret.I = P->ini->I;
     ret.prox = NULL;// manter??? ou usar =  P->ini->prox;
@@ -66,6 +66,8 @@ pedido retira_Pedidos(Pedidos * P){//Retira do inicio da fila de Pedidos, "atend
         P->fim = NULL;
     return ret;
 }
+
+int GetTempoEspera(Pedidos * P, int id);
 
 void imprime_Pedidos(Pedidos * P){
     pedido * aux;
@@ -93,7 +95,7 @@ void imprime_Pedidos(Pedidos * P){
                 printf("?????\n");
                 break;
         }
-        printf("Tempo de Entrega: %d\n",aux->tempo_entrega);
+        printf("Tempo de Entrega: %d\n",GetTempoEspera(P,aux->num));
         printf("Valor do Pedido: R$%.2f\n",aux->v_pedido);
         imprime_Itens(aux->I);
         printf("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
@@ -110,4 +112,22 @@ void libera_Pedidos(Pedidos * P){
     }
     free(P);
 }
+
+int GetTempoEspera(Pedidos * P, int id){
+    int tempo_espera = 0;
+    Pedidos * AUX = inicializa_Pedidos();
+    pedido p;
+    while(!vazia_Pedidos(P)){
+        p=retira_Pedidos(P);
+        if(p.num <= id)
+            tempo_espera += p.tempo;
+        insere_Pedidos(AUX,p);
+    }
+    while(!vazia_Pedidos(AUX)){
+        insere_Pedidos(P,retira_Pedidos(AUX));
+    }
+    libera_Pedidos(AUX);
+    return tempo_espera + 15;
+}
+
 #endif
