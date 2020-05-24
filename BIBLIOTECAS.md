@@ -130,6 +130,11 @@ ATENÇÃO, caso o espaço em memória que foi alocado sua FILA de Itens não sej
 >```
 ***Descrição:** Faz um free em todos os espaços de memória envolvidos na estrutura **P**, liberando esta memória.*
 
+> ```c
+>void excluir_Pedido(Pedidos * Pedidos_Carrinho,int id)
+>```
+***Descrição:** Remove um pedido **id** da fila de pedidos**Pedidos_Carrinho** .*
+
 
 
 # Biblioteca "pontos.h"       -   (Implementação de LISTAS para registro dos Pontos de venda).
