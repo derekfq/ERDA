@@ -133,7 +133,7 @@ ATENÇÃO, caso o espaço em memória que foi alocado sua FILA de Itens não sej
 > ```c
 >void excluir_Pedido(Pedidos * Pedidos_Carrinho,int id)
 >```
-***Descrição:** Remove um pedido **id** da fila de pedidos**Pedidos_Carrinho** .*
+***Descrição:** Remove um pedido **id** da fila de pedidos **Pedidos_Carrinho** .*
 
 
 
