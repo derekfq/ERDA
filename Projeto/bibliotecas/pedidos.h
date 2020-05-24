@@ -110,4 +110,26 @@ void libera_Pedidos(Pedidos * P){
     }
     free(P);
 }
+
+void excluir_Pedido(Pedidos * Pedidos_Carrinho,int id)//
+{
+    Pedidos * auxPedidos = inicializa_Pedidos();
+    pedido  auxInfo ;
+
+    while(!vazia_Pedidos(Pedidos_Carrinho))
+     {
+        auxInfo=retira_Pedidos(Pedidos_Carrinho);
+        if(auxInfo.num!=id)
+        {
+            insere_Pedidos(auxPedidos,auxInfo);
+        }
+     }
+
+         while(!vazia_Pedidos(auxPedidos))
+     {
+        auxInfo=retira_Pedidos(auxPedidos);
+        insere_Pedidos(Pedidos_Carrinho,auxInfo);
+     }
+
+}
 #endif
