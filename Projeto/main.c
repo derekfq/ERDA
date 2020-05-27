@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Bibliotecas/sistema.h"
+#include "bibliotecas/sistema.h"
 
 int main(int argc, char ** argv){
     Pontos * ListaDePontos = NULL;
