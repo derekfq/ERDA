@@ -41,7 +41,7 @@ void insere_Pedidos(Pedidos * P, pedido info){ //Insere novo pedido "info" no fi
     novo->prox = NULL;
     if(P->fim)//se o fim nao for vazio, insere no fim
         P->fim->prox = novo;
-    else//insere no fim se for vazio
+
         P->fim = novo;
     if(!P->ini)//se a fila estava vazia antes
         P->ini = P->fim;

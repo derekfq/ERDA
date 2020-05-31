@@ -43,6 +43,7 @@ void insere_Ponto (Pontos ** L, ponto valor){//insere no fim
 void imprime_Pontos (Pontos* recebida){
     Pontos* p; /* variável auxiliar para percorrer a Pontos */
     for (p = recebida; p; p = p->prox){
+    printf("//////////////////////////////////////////////////////////////////////////\n");
         printf("Regiao: ");
         switch(p->regiao){
             case centro:

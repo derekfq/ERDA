@@ -27,13 +27,14 @@ void CadastraPonto(Pontos ** ListaDePontos, Regiao reg, Experiencia exp){
 }
 
 //-------------------------------------------------------------------------------------------
-//DOING: 
+//DOING:
 
 //--- CADASTRAR PEDIDOS --------------------------------------
 int TempoPedido(Itens * PilhaItens, int exp);
 float ValorPedido(Itens * PilhaItens);
 
 void CadastraPedido(ponto * Ponto, Itens * NovosItens){
+    //PRECISO INSERIR NO FIM
     pedido novo;
     novo.num = gera_pedidoId();
     novo.regiao = Ponto->regiao;
@@ -46,7 +47,7 @@ void CadastraPedido(ponto * Ponto, Itens * NovosItens){
     //atualizar total de pedidos do ponto
     Ponto->pedidos_total = Ponto->pedidos_total + 1;
     /*OBS: tempo = tempo de preparo do pedido individualmente
-        na hora de imprimir info do pedido, eu dou o tempo de espera total 
+        na hora de imprimir info do pedido, eu dou o tempo de espera total
         (considerando ordem da fila e 15min da entrega) */
 }
 
@@ -81,10 +82,11 @@ float ValorPedido(Itens * PilhaItens){ //PILHA
     libera_Itens(AUX);
     return valor_pedido;
 }
-void gera_Info()
+
+
+void gera_Info(Pontos ** ListaDePontos)
 {
 ////Ponto
-    Pontos * ListaDePontos = NULL;
     int i,contador=0,ja_Tem;
     int regioes[5],num_Exp[3]={2,3,5};
     int qtdd_Pontos=0,exp=0,regiao=0;
@@ -93,24 +95,20 @@ void gera_Info()
     int qtdd_Pedidos=0;
 ////
 ////Item
-    Itens * I = inicializa_Itens();
+    Itens * I;
     item itm;
-    int k,qtdd_Itens=0,valor_Int=0,num_nome_Item=0,qtdd_itens_Pedido=0;
+    int k,qtdd_Itens=0,valor_Int=0,num_nome_Item=0,qtdd_Itens_Pedido=0;
     float valor_Unitario=0;
     char nomes_itens_Aux[5][20]={"Dog Xtudao","Dog Milhao","Doginho","Dog Tradicional","Podrao do Tio"};
     char nomes_itens[5][20];
-    char obs[7]={"Sem obs"};
 ////
 
     srand(time(NULL));
 //quantidade de pontos e de itens que serao gerados
-    qtdd_Pontos = 3 + rand() % 5 ;// de 3 a 7
-    qtdd_Itens = 1 + rand() % 6;// de 1 a 5
-
+    qtdd_Pontos = 3 + rand() % 3 ;// de 3 a 7
 
     //Verificador para os numeros aleatorios nao serem repetidsos
-    while(contador<5)
-    {
+    while(contador<5){
         ja_Tem=0;
         regiao = 1 + rand () % 5 ;
 
@@ -127,46 +125,42 @@ void gera_Info()
             regioes[contador]=regiao;
             contador++;
         }
-
     }
-
+    //REGIOES OK
 
     //gera os pontos com regiao(sem repetir) e experiencia aleatorios
     for(i=0;i<qtdd_Pontos;i++)
-    {
+    {//PARA CADA PONTO
+        printf("CADASTRANDO PONTO i=%d\n",i);
         exp = rand() % 3 ; // gera o numero de experiencia de 0 a 2, num_Exp possui os numeros 2 3 e 5
-        CadastraPonto(&ListaDePontos,regioes[qtdd_Pontos],num_Exp[exp]);
+        CadastraPonto(ListaDePontos,regioes[i],num_Exp[exp]);
+        printf("\nPONTO CADASTRADO\n");
 
+        //QUANTOS PEDIDOS NAQUELE PONTO SERAO CADASTRADOS
+        
 
-        /////////
         qtdd_Pedidos= 5 + rand() % 11;// de 5 a 15
-        for(j=0;j<qtdd_Pedidos;j++)
+        for(j=0;j<qtdd_Pedidos;j++) //FOR PARA CADA PEDIDO
         {
-            /////////
-            qtdd_itens_Pedido= 1+ rand() %5;
-            valor_Int= 100+ rand()%51; //valor unitario em int
-            valor_Unitario=(float)valor_Int/10;// valor convertido em float
-
-//////////////
-            qtdd_Itens = 1 + rand() % 6;// de 1 a 5
-
-            for (k=0;k<qtdd_Itens;k++)// zera a matriz de nomes
+            I = inicializa_Itens();
+            qtdd_Itens_Pedido = 1 + rand() % 5;//QUANTOS ITENS DAQUELE PEDIDO
+            for (k=0;k<5;k++)// zera a matriz de nomes
             {
-             strcpy(nomes_itens,"");
+                memset(nomes_itens[k],'\0',20);
             }
-
+            contador=0;
             while(contador<5)// verifica para nao repetir nome dos produtos
             {
                 ja_Tem=0;
                 char nome[20];
-                num_nome_Item = 1 + rand() %5;// de 1 a 5
+                num_nome_Item = rand() %5;// de 0 a 4
                 strcpy(nome,nomes_itens_Aux[num_nome_Item]);
 
-                for(k=0;k<qtdd_Itens;k++)
+                for(k=0;k<5;k++)
                 {
                     if(strcmp(nome,nomes_itens[k])==0)
                     {
-                    ja_Tem=1;
+                        ja_Tem=1;
                     }
                 }
 
@@ -176,17 +170,25 @@ void gera_Info()
                 contador++;
                 }
             }
-            for(k=0;k<qtdd_Itens;k++)
+            //DEFINE CADA ITEM DO PEDIDO
+            for(k=0;k<qtdd_Itens_Pedido;k++)
                 {
-                    itm = set_item(nomes_itens[k],qtdd_itens_Pedido,valor_Unitario,obs);// cadastra o item itm
-                    push_item(I,itm);// manda o item para lista de item I
+                    qtdd_Itens = 1 + rand() % 5;
+                    valor_Int= 100+ rand()%51; //valor unitario em int
+                    valor_Unitario=(float)valor_Int/10;// valor convertido em float
+                    itm = set_item(nomes_itens[k],qtdd_Itens,valor_Unitario,NULL);// cadastra o item itm
+                    push_item(I,itm);// manda o item para lista de item
                 }
-///////////////
-        CadastraPedido(ListaDePontos,I);//manda a lista de itens para o pedido do ponto
-        }
-    }
 
+        ponto * PontoAtual = busca_Pontos(*ListaDePontos,regioes[i]);
+        CadastraPedido(PontoAtual,I);//manda a lista de itens para o pedido do ponto
+        printf("xD PEDIDO (j=%d) CADASTRADO!\n",j);
+        
+        }
+        printf("////////////////////////////////////////////////\n");
+    }
 }
+
 
 //-----------------------------------------------------------
 
