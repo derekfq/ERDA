@@ -13,7 +13,8 @@ int main(int argc, char ** argv){
 
     gera_Info(&ListaDePontos);
     printf("\n\n\n\n");
-    imprime_Pontos(ListaDePontos);
+    Relatorio(ListaDePontos);
+   // imprime_Pontos(ListaDePontos);
 
     printf("\n\n\n\n\n\n\n\n\n");
     libera_Pontos(ListaDePontos);
