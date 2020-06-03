@@ -188,6 +188,213 @@ void gera_Info(Pontos ** ListaDePontos)
         printf("////////////////////////////////////////////////\n");
     }
 }
+void imprime_Pontos_Simples(Pontos* recebida){
+Pontos*p;
+for (p = recebida; p; p = p->prox){
+    printf("//////////////////////////////////////////////////////////////////////////\n");
+        printf("Regiao: ");
+        switch(p->regiao){
+            case centro:
+                printf("Centro\n");
+                break;
+            case sul:
+                printf("Zona Sul\n");
+                break;
+            case leste:
+                printf("Zona Leste\n");
+                break;
+            case norte:
+                printf("Zona Norte\n");
+                break;
+            case oeste:
+                printf("Zona Oeste\n");
+                break;
+            default:
+                printf("?????\n");
+                break;
+        }
+        printf("Experiencia de preparo: ");
+        switch(p->exp){
+            case alta:
+                printf("Alta\n");
+                break;
+            case media:
+                printf("Media\n");
+                break;
+            case baixa:
+                printf("Baixa\n");
+                break;
+            default:
+                printf("?????\n");
+                break;
+        }
+        printf("Qntd. Total de Pedidos: %ld\n",p->pedidos_total);
+        printf("Valor Total Vendido: R$ %.2f\n",p->v_total_vendido);
+    }
+
+}
+
+void imprime_Pedidos_ponto(Pedidos * P){
+
+
+
+    pedido * aux;
+    for(aux=P->ini;aux;aux=aux->prox){
+        printf("Pedido #%d\n",aux->num);
+        printf("Regiao: ");
+        switch(aux->regiao){
+            case centro:
+                printf("Centro\n");
+                break;
+            case sul:
+                printf("Zona Sul\n");
+                break;
+            case leste:
+                printf("Zona Leste\n");
+                break;
+            case norte:
+                printf("Zona Norte\n");
+                break;
+            case oeste:
+                printf("Zona Oeste\n");
+                break;
+            default:
+                printf("?????\n");
+                break;
+        }
+        printf("Tempo de Entrega: %d\n",GetTempoEspera(P,aux->num));
+        printf("Valor do Pedido: R$%.2f\n",aux->v_pedido);
+        imprime_Itens(aux->I);
+        printf("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+    }
+
+
+
+
+
+}
+
+void imprime_Pedido_Escolha(Pedidos * Pedidos_Carrinho,int id){
+
+    Pedidos * auxPedidos = inicializa_Pedidos();
+    pedido  auxInfo ;
+
+    while(!vazia_Pedidos(Pedidos_Carrinho))
+     {
+        auxInfo=retira_Pedidos(Pedidos_Carrinho);
+
+        if(auxInfo.num==id){
+        printf("Pedido #%d\n",auxInfo.num);
+        printf("Regiao: ");
+        switch(auxInfo.regiao){
+            case centro:
+                printf("Centro\n");
+                break;
+            case sul:
+                printf("Zona Sul\n");
+                break;
+            case leste:
+                printf("Zona Leste\n");
+                break;
+            case norte:
+                printf("Zona Norte\n");
+                break;
+            case oeste:
+                printf("Zona Oeste\n");
+                break;
+            default:
+                printf("?????\n");
+                break;
+        }
+        printf("Tempo de Entrega: %d\n",GetTempoEspera(Pedidos_Carrinho,auxInfo.num));
+        printf("Valor do Pedido: R$%.2f\n",auxInfo.v_pedido);
+        imprime_Itens(auxInfo.I);
+        printf("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+        }
+                insere_Pedidos(auxPedidos,auxInfo);
+    }
+
+
+         while(!vazia_Pedidos(auxPedidos))
+     {
+        auxInfo=retira_Pedidos(auxPedidos);
+        insere_Pedidos(Pedidos_Carrinho,auxInfo);
+     }
+
+}
+
+void Relatorio(Pontos* recebida){
+    int escolha=0,reg,id=0;
+    char continuar;
+    ponto * PontoAtual;
+   // Pontos* p; /* variável auxiliar para percorrer a Pontos */
+   do{
+        system("cls");
+    do{
+    printf("\n\n\n\n");
+    printf("\tRelatorio\n\n");
+    printf(" 1-Listar pontos\n 2-Listar pedidos de um ponto\n 3-Procurar pedido\n 4-Voltar\n\n escolha:");
+    scanf("%d",&escolha);
+    }while(escolha!=1&&escolha!=2&&escolha!=3&&escolha!=4);
+
+    switch(escolha){
+        case 1:
+            system("cls");
+        imprime_Pontos_Simples(recebida);
+        system("pause");
+            break;
+
+        case 2:
+            do{
+
+            do{
+        reg=0;
+        system("cls");
+        printf("De qual regiao voce deseja ver os pedidos?");
+        printf("\n1-centro\n2-sul\n3-leste4-norte\n5-oeste");
+        scanf("%d",&reg);
+        if(reg!=1&&reg!=2&&reg!=3&&reg!=4&&reg!=5)
+        {
+         printf("Regiao invalida.\n");
+         system("pause");
+        }
+            }while(reg!=1&&reg!=2&&reg!=3&&reg!=4&&reg!=5);
+        PontoAtual = busca_Pontos(recebida,reg);
+        imprime_Pedidos_ponto(PontoAtual->P);
+         system("pause");
+            do{
+                printf("\n\nDeseja ver os pedidos de outra regiao?<s/n>\n:");
+                scanf("%c",&continuar);
+                system("cls");
+                }while(continuar!='s'&&continuar!='n');
+            }while(continuar!='n');
+            break;
+
+        case 3:
+            do{
+                system("cls");
+                printf("Qual pedido deseja consultar?: ");
+                scanf("%d",&id);
+                imprime_Pedido_Escolha(recebida->P,id);
+                system("pause");
+                do{
+                    printf("\n\nDeseja procurar outro item?<s/n>\n:");
+                    scanf("%c",&continuar);
+                    system("cls");
+                }while(continuar!='s'&&continuar!='n');
+            }while(continuar!='n');
+
+            break;
+
+        default:
+            break;
+    }
+   }    while(escolha!=4);
+
+
+
+}
+
 
 
 //-----------------------------------------------------------
