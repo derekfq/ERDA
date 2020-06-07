@@ -457,9 +457,36 @@ for (p = recebida; p; p = p->prox){
 void atende_pedido(Pontos*recebida,Pedidos * P){
     pedido ret;
     Pontos* p;
-    imprime_Pedido_Escolha(recebida,ret.num);
-    system("pause);
     ret=retira_Pedidos(P);
+
+    printf("Pedido #%d\n",ret.num);
+        printf("Regiao: ");
+        switch(ret.regiao){
+            case centro:
+                printf("Centro\n");
+                break;
+            case sul:
+                printf("Zona Sul\n");
+                break;
+            case leste:
+                printf("Zona Leste\n");
+                break;
+            case norte:
+                printf("Zona Norte\n");
+                break;
+            case oeste:
+                printf("Zona Oeste\n");
+                break;
+            default:
+                printf("?????\n");
+                break;
+        }
+        printf("Tempo de Entrega: %d\n",GetTempoEspera(P,ret.num));
+        printf("Valor do Pedido: R$%.2f\n",ret.v_pedido);
+        imprime_Itens(ret.I);
+        printf("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+
+    system("pause");
     for (p = recebida; p; p = p->prox){
 
     if(ret.regiao==p->regiao)
