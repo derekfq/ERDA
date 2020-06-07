@@ -1,5 +1,6 @@
 #ifndef SISTEMA_H_INCLUDED
 #define SISTEMA_H_INCLUDED
+#include <windows.h>
 #include "pontos.h"
 #include <time.h>
 /* BIBLIOTECA DE IMPLEMENTAÇÃO DO FUNCIONAMENTO DE TODAS AS FUNCIONALIDADES DO SISTEMA */
@@ -52,6 +53,8 @@ void CadastraPedido(ponto * Ponto, Itens * NovosItens){
 }
 
 int TempoPedido(Itens * PilhaItens, int exp){ //PILHA
+
+
     int qntd_total = 0;
     Itens * AUX = inicializa_Itens();
     item x;
@@ -84,8 +87,9 @@ float ValorPedido(Itens * PilhaItens){ //PILHA
 }
 
 
-void gera_Info(Pontos ** ListaDePontos)
-{
+void gera_Info(Pontos ** ListaDePontos){
+
+
 ////Ponto
     int i,contador=0,ja_Tem;
     int regioes[5],num_Exp[3]={2,3,5};
@@ -131,13 +135,11 @@ void gera_Info(Pontos ** ListaDePontos)
     //gera os pontos com regiao(sem repetir) e experiencia aleatorios
     for(i=0;i<qtdd_Pontos;i++)
     {//PARA CADA PONTO
-        printf("CADASTRANDO PONTO i=%d\n",i);
         exp = rand() % 3 ; // gera o numero de experiencia de 0 a 2, num_Exp possui os numeros 2 3 e 5
         CadastraPonto(ListaDePontos,regioes[i],num_Exp[exp]);
-        printf("\nPONTO CADASTRADO\n");
 
         //QUANTOS PEDIDOS NAQUELE PONTO SERAO CADASTRADOS
-        
+
 
         qtdd_Pedidos= 5 + rand() % 11;// de 5 a 15
         for(j=0;j<qtdd_Pedidos;j++) //FOR PARA CADA PEDIDO
@@ -181,17 +183,14 @@ void gera_Info(Pontos ** ListaDePontos)
                 }
 
         ponto * PontoAtual = busca_Pontos(*ListaDePontos,regioes[i]);
-        CadastraPedido(PontoAtual,I);//manda a lista de itens para o pedido do ponto
-        printf("xD PEDIDO (j=%d) CADASTRADO!\n",j);
-        
+        CadastraPedido(PontoAtual,I);//manda a lista de itens para o pedido do ponto;
         }
-        printf("////////////////////////////////////////////////\n");
     }
 }
 void imprime_Pontos_Simples(Pontos* recebida){
 Pontos*p;
 for (p = recebida; p; p = p->prox){
-    printf("//////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
         printf("Regiao: ");
         switch(p->regiao){
             case centro:
@@ -236,7 +235,7 @@ for (p = recebida; p; p = p->prox){
 
 void imprime_Pedidos_ponto(Pedidos * P){
 
-
+    system("cls");
 
     pedido * aux;
     for(aux=P->ini;aux;aux=aux->prox){
@@ -274,19 +273,21 @@ void imprime_Pedidos_ponto(Pedidos * P){
 
 }
 
-void imprime_Pedido_Escolha(Pedidos * Pedidos_Carrinho,int id){
+void imprime_Pedido_Escolha(Pontos * recebida,int id){
 
-    Pedidos * auxPedidos = inicializa_Pedidos();
-    pedido  auxInfo ;
+    Pontos* p;
+    Pedidos * Paux;
 
-    while(!vazia_Pedidos(Pedidos_Carrinho))
-     {
-        auxInfo=retira_Pedidos(Pedidos_Carrinho);
+    for (p = recebida; p; p = p->prox){
+    pedido * aux;
+    printf("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+    Paux=p->P;
+    for(aux=Paux->ini;aux;aux=aux->prox){
 
-        if(auxInfo.num==id){
-        printf("Pedido #%d\n",auxInfo.num);
+        if(aux->num==id){
+        printf("Pedido #%d\n",aux->num);
         printf("Regiao: ");
-        switch(auxInfo.regiao){
+        switch(aux->regiao){
             case centro:
                 printf("Centro\n");
                 break;
@@ -306,31 +307,25 @@ void imprime_Pedido_Escolha(Pedidos * Pedidos_Carrinho,int id){
                 printf("?????\n");
                 break;
         }
-        printf("Tempo de Entrega: %d\n",GetTempoEspera(Pedidos_Carrinho,auxInfo.num));
-        printf("Valor do Pedido: R$%.2f\n",auxInfo.v_pedido);
-        imprime_Itens(auxInfo.I);
+        printf("Tempo de Entrega: %d\n",GetTempoEspera(Paux,aux->num));
+        printf("Valor do Pedido: R$%.2f\n",aux->v_pedido);
+        imprime_Itens(aux->I);
         printf("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
-        }
-                insere_Pedidos(auxPedidos,auxInfo);
     }
+}
 
-
-         while(!vazia_Pedidos(auxPedidos))
-     {
-        auxInfo=retira_Pedidos(auxPedidos);
-        insere_Pedidos(Pedidos_Carrinho,auxInfo);
-     }
-
+    }
 }
 
 void Relatorio(Pontos* recebida){
     int escolha=0,reg,id=0;
     char continuar;
     ponto * PontoAtual;
-   // Pontos* p; /* variável auxiliar para percorrer a Pontos */
+   // Pontos* p;  variável auxiliar para percorrer a Pontos
    do{
         system("cls");
     do{
+    system("cls");
     printf("\n\n\n\n");
     printf("\tRelatorio\n\n");
     printf(" 1-Listar pontos\n 2-Listar pedidos de um ponto\n 3-Procurar pedido\n 4-Voltar\n\n escolha:");
@@ -351,7 +346,7 @@ void Relatorio(Pontos* recebida){
         reg=0;
         system("cls");
         printf("De qual regiao voce deseja ver os pedidos?");
-        printf("\n1-centro\n2-sul\n3-leste4-norte\n5-oeste");
+        printf("\n1-centro\n2-sul\n3-leste\n4-norte\n5-oeste\n:");
         scanf("%d",&reg);
         if(reg!=1&&reg!=2&&reg!=3&&reg!=4&&reg!=5)
         {
@@ -372,10 +367,12 @@ void Relatorio(Pontos* recebida){
 
         case 3:
             do{
+                id=0;
                 system("cls");
                 printf("Qual pedido deseja consultar?: ");
                 scanf("%d",&id);
-                imprime_Pedido_Escolha(recebida->P,id);
+
+                imprime_Pedido_Escolha(recebida,id);
                 system("pause");
                 do{
                     printf("\n\nDeseja procurar outro item?<s/n>\n:");
@@ -395,6 +392,80 @@ void Relatorio(Pontos* recebida){
 
 }
 
+int Menu_principal(){
+
+
+
+    int escolha;
+    do
+    {
+        system("cls");
+        escolha = 0;
+        printf("\n");
+        printf("\t\t\t\t|--------------|\n");
+        printf("\t\t\t\t|Menu Principal|\n");
+        printf("\t\t\t\t|--------------|\n");
+        printf("\n\n\n");
+        printf("\t 1 =Gerar informacoes(Pontos,Pedidos,Itens)\n");
+        printf("\t 2 =Relatorios\n");
+        printf("\t 3 =Atender Pedido\n");
+        printf("\t 4 =Cancelar pedido\n");
+        printf("\t 5 =Fazer Pedido\n");
+        printf("\t 6 =Sair\n");
+        printf("\n\n\t :");
+        scanf("%d",&escolha);
+
+        if(escolha < 1 || escolha > 6)
+        {
+            MessageBox(NULL,"  Opcao invalida  ", " << ERRO >>", MB_ICONEXCLAMATION);
+            fflush(stdin);
+        }
+    }
+    while(escolha < 1 || escolha > 6);
+    system("cls");
+    return escolha;
+}
+void excluir_Pedido(Pontos* recebida,int id)//
+{
+    Pedidos*Pedidos_Carrinho;
+    Pontos* p;
+    Pedidos * auxPedidos = inicializa_Pedidos();
+    pedido  auxInfo ;
+
+for (p = recebida; p; p = p->prox){
+        Pedidos_Carrinho=p->P;
+
+    while(!vazia_Pedidos(Pedidos_Carrinho))
+     {
+        auxInfo=retira_Pedidos(Pedidos_Carrinho);
+        printf("%d-",auxInfo.num);
+        if(auxInfo.num!=id)
+        {
+            insere_Pedidos(auxPedidos,auxInfo);
+        }
+     }
+
+         while(!vazia_Pedidos(auxPedidos))
+     {
+        auxInfo=retira_Pedidos(auxPedidos);
+        insere_Pedidos(Pedidos_Carrinho,auxInfo);
+     }
+
+}
+}
+
+void atende_pedido(Pontos*recebida,Pedidos * P){
+    pedido ret;
+    Pontos* p;
+    imprime_Pedido_Escolha(recebida,ret.num);
+    ret=retira_Pedidos(P);
+    for (p = recebida; p; p = p->prox){
+
+    if(ret.regiao==p->regiao)
+        p->v_total_vendido+=ret.v_pedido;
+    }
+
+}
 
 
 //-----------------------------------------------------------
