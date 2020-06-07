@@ -458,6 +458,7 @@ void atende_pedido(Pontos*recebida,Pedidos * P){
     pedido ret;
     Pontos* p;
     imprime_Pedido_Escolha(recebida,ret.num);
+    system("pause);
     ret=retira_Pedidos(P);
     for (p = recebida; p; p = p->prox){
 
