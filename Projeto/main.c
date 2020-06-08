@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "sistema.h"
+#include "bibliotecas/sistema.h"
 //include das bibliotecas padrões no items.h
 
 //Free são importantes para não estourar a memoria das pilha, fila e lista
